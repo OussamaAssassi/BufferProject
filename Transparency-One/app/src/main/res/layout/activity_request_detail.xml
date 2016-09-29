@@ -11,116 +11,80 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.oussa.transparency_one.Activities.MainActivity">
 
-
-    <TableLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:stretchColumns="1"
-        android:elevation="0dp">
+        android:padding="10dp">
 
-        <TableRow>
-
-            <TextView
-                android:layout_column="0"
-                android:text="Visibility request detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/pageTitle"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:layout_margin="5dp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/labelProductName"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Customer product name :" />
-            <TextView
-                android:id="@+id/productName"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:gravity="right" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/labelSupplierName"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="70dp"
-                android:layout_alignLeft="@+id/productName"
-                android:layout_below="@+id/productName"
-                tools:text="Customer company :" />
-            <TextView
-                android:id="@+id/supplierName"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:gravity="right" />
-
-        </TableRow>
-
-        <TableRow >
-
-            <TextView
-                android:id="@+id/labelCreationDate"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="70dp"
-                android:layout_alignLeft="@+id/productName"
-                android:layout_below="@+id/productName"
-                tools:text="Received :" />
-            <TextView
-                android:id="@+id/creationDate"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:gravity="right" />
-
-        </TableRow>
-
-        <TableRow
+        <TextView
+            android:layout_column="0"
+            android:text="Customer visibility request"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:id="@+id/labelPageTitle"
+            android:layout_marginBottom="6dp" />
 
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
+            android:id="@+id/labelCustomerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Customer company"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
 
-            <TextView
-                android:text="Associate with my own product :"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView4"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:layout_margin="5dp" />
+        <TextView
+            android:id="@+id/customerName"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
-        </TableRow>
+        <TextView
+            android:id="@+id/labelProductName"
+            android:layout_width="match_parent"
+            android:text="Customer product name"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
 
-        <TableRow>
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-            <ListView
-                android:layout_column="0"
-                android:id="@+id/productsListView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:headerDividersEnabled="false"
-                android:layout_marginTop="10dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-        </TableRow>
 
-    </TableLayout>
+        <TextView
+            android:id="@+id/labelCreationDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Date received"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
+
+        <TextView
+            android:id="@+id/creationDate"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <TextView
+            android:id="@+id/labelProductChoice"
+            android:text="Associate with my own product :"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <ListView
+            android:layout_column="0"
+            android:id="@+id/productsListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:headerDividersEnabled="false"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </LinearLayout>
 
 </RelativeLayout>

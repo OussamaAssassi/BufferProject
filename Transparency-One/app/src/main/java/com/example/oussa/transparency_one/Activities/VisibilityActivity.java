@@ -3,12 +3,12 @@ package com.example.oussa.transparency_one.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.TextView;
 
-import com.example.oussa.transparency_one.DTOs.Product;
-import com.example.oussa.transparency_one.DTOs.ProductsListAdapter;
+import com.example.oussa.transparency_one.DTOs.VisibilitiesListAdapter;
 import com.example.oussa.transparency_one.R;
 
 import java.util.ArrayList;
@@ -22,31 +22,32 @@ public class VisibilityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_request_detail);
+        setContentView(R.layout.activity_chose_visibility);
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
 
-        ListView listView = (ListView) findViewById(R.id.productsListView);
+        ListView listView = (ListView) findViewById(R.id.visibilitiesListView);
 
-        List<Product> productsAvailable = getProductsAvailable();
+        List<String> visibilities = getVisibilitiesAvailable();
 
-        listView.setAdapter(new ProductsListAdapter(VisibilityActivity.this, productsAvailable));
-        TextView productNameTextView = (TextView) findViewById(R.id.productName);
-        productNameTextView.setText(intent.getStringExtra("requestedProductName"));
-        TextView supplierNameTextView = (TextView) findViewById(R.id.supplierName);
-        supplierNameTextView.setText(intent.getStringExtra("companyName"));
-        TextView creationDateTextView = (TextView) findViewById(R.id.creationDate);
-        creationDateTextView.setText(intent.getStringExtra("date"));
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(VisibilityActivity.this, MainActivity.class);
+                VisibilityActivity.this.startActivity(myIntent);
+            }
+        });
+
+        listView.setAdapter(new VisibilitiesListAdapter(VisibilityActivity.this, visibilities));
     }
-    private List<Product> getProductsAvailable()
+    private List<String> getVisibilitiesAvailable()
     {
-        List<Product> products = new ArrayList<Product>();
-        products.add(new Product("Own Paella"));
-        products.add(new Product("Own  Marshmallows"));
-        products.add(new Product("Own Yogurt Cherry"));
-        products.add(new Product("Own Mayan Drink"));
-        products.add(new Product("Own Lakewood Drink"));
+        List<String> products = new ArrayList<String>();
+        products.add("FULL");
+        products.add("GEOGRAPHICAL");
+        products.add("COMPOSITION");
         return products;
     }
 }
