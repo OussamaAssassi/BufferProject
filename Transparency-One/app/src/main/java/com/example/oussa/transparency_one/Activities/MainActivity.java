@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -67,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
             }});
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
     private void loadDataInTab(String tabId)
     {
         ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
@@ -114,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else if(notificationType == "sent"){
+
             List<Notification> notifications = new ArrayList<Notification>();
 
             notifications.add(new Notification("Source 1", "Supplier 1", "1 hour ago", 1));
@@ -126,6 +134,5 @@ public class MainActivity extends AppCompatActivity {
         else{
             return null;
         }
-
     }
 }
