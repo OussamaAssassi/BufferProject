@@ -1,20 +1,23 @@
-package com.example.oussa.transparency_one;
+package com.example.oussa.transparency_one.DTOs;
 
 /**
  * Created by oussa on 28/09/2016.
  */
+
 import android.content.Context;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.LayoutInflater;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import com.example.oussa.transparency_one.R;
+
 import java.util.List;
 
-public class ReceivedNotificationAdapter extends ArrayAdapter<Notification> {
+public class SentNotificationAdapter extends ArrayAdapter<Notification> {
 
-    public ReceivedNotificationAdapter(Context context, List<Notification> notifications) {
+    public SentNotificationAdapter(Context context, List<Notification> notifications) {
         super(context, 0, notifications);
     }
 
@@ -22,7 +25,7 @@ public class ReceivedNotificationAdapter extends ArrayAdapter<Notification> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_received,parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_sent,parent, false);
         }
 
 
@@ -31,7 +34,6 @@ public class ReceivedNotificationAdapter extends ArrayAdapter<Notification> {
             viewHolder = new NotificationViewHolder();
             viewHolder.productName = (TextView) convertView.findViewById(R.id.productName);
             viewHolder.supplierName = (TextView) convertView.findViewById(R.id.supplierName);
-            viewHolder.picture = (ImageView) convertView.findViewById(R.id.picture);
             viewHolder.creationDate = (TextView) convertView.findViewById(R.id.creationDate);
             convertView.setTag(viewHolder);
         }
@@ -41,7 +43,6 @@ public class ReceivedNotificationAdapter extends ArrayAdapter<Notification> {
         viewHolder.productName.setText(notification.getProductName());
         viewHolder.supplierName.setText(notification.getSupplierName());
         viewHolder.creationDate.setText(notification.getCreationDate());
-        viewHolder.picture.setImageResource(notification.getPicture());
 
         return convertView;
     }
@@ -49,7 +50,6 @@ public class ReceivedNotificationAdapter extends ArrayAdapter<Notification> {
     private class NotificationViewHolder{
         public TextView productName;
         public TextView supplierName;
-        public ImageView picture;
         public TextView creationDate;
     }
 }

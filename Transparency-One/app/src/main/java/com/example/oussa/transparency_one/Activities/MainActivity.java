@@ -1,4 +1,4 @@
-package com.example.oussa.transparency_one;
+package com.example.oussa.transparency_one.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
+
+import com.example.oussa.transparency_one.DTOs.Notification;
+import com.example.oussa.transparency_one.R;
+import com.example.oussa.transparency_one.DTOs.ReceivedNotificationAdapter;
+import com.example.oussa.transparency_one.DTOs.SentNotificationAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,13 +63,12 @@ public class MainActivity extends AppCompatActivity {
             public void onTabChanged(String tabId) {
                 loadDataInTab(tabId);
             }});
-
     }
 
     private void loadDataInTab(String tabId)
     {
         ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
-        List<Notification> notifications = getNotifications(tabId);
+        List<Notification> notifications = getMockedNotifications(tabId);
         switch (tabId)
         {
             case "received":
@@ -73,7 +77,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent myIntent = new Intent(MainActivity.this, RequestActivity.class);
-                        myIntent.putExtra("key", "value");
+                        Notification notification = (Notification) parent.getItemAtPosition(position);
+                        myIntent.putExtra("requestedProductName", notification.getProductName());
+                        myIntent.putExtra("companyName", notification.getSupplierName());
+                        myIntent.putExtra("date", notification.getCreationDate());
+
                         MainActivity.this.startActivity(myIntent);
                     }
                 });
@@ -82,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
                 listView.setAdapter(new SentNotificationAdapter(MainActivity.this, notifications));
                 break;
         }
-
-
     }
 
     private View createTabIndicator(String text) {
@@ -93,16 +99,15 @@ public class MainActivity extends AppCompatActivity {
         return view;
     }
 
-
-    private List<Notification> getNotifications(String notificationType){
+    private List<Notification> getMockedNotifications(String notificationType){
         if(notificationType == "received")
         {
             List<Notification> notifications = new ArrayList<Notification>();
-            notifications.add(new Notification("Paella", "Jumpy Fishes Ltd", "2 hours ago", R.drawable.logo_big));
-            notifications.add(new Notification("Marshmallows", "Candies for us", "4 hours ago", R.drawable.logo_big_negatig));
-            notifications.add(new Notification("Yogurt Cherry", "Milk & co", "1 day ago", R.drawable.logo_big));
-            notifications.add(new Notification("Mayan Drink", "Energy inc.", "1 week ago", R.drawable.logo_big));
-            notifications.add(new Notification("Lakewood Drink", "Drink corp", "2 months ago", R.drawable.logo_big));
+            notifications.add(new Notification("Paella", "Jumpy Fishes Ltd", "2 hours ago", R.drawable.hands_icon));
+            notifications.add(new Notification("Marshmallows", "Candies for us", "4 hours ago", R.drawable.eye_icon));
+            notifications.add(new Notification("Yogurt Cherry", "Milk & co", "1 day ago", R.drawable.hands_icon));
+            notifications.add(new Notification("Mayan Drink", "Energy inc.", "1 week ago", R.drawable.hands_icon));
+            notifications.add(new Notification("Lakewood Drink", "Drink corp", "2 months ago", R.drawable.eye_icon));
             return notifications;
 
         }
