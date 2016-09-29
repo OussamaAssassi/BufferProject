@@ -27,7 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/pageTitle"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:layout_margin="5dp" />
         </TableRow>
 
         <TableRow
@@ -35,44 +36,75 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/labelProductName"
+                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="Customer product name :"
-                android:id="@+id/labelProductName" />
+                android:text="Customer product name :" />
             <TextView
-                android:layout_weight="1"
                 android:id="@+id/productName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                tools:text="Source 1" />
+                android:gravity="right" />
 
         </TableRow>
 
         <TableRow>
 
             <TextView
-                android:layout_column="0"
-                android:id="@+id/supplierName"
-                android:layout_width="match_parent"
+                android:id="@+id/labelSupplierName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="70dp"
-                android:textColor="@android:color/black"
                 android:layout_alignLeft="@+id/productName"
                 android:layout_below="@+id/productName"
-                tools:text="Supplier name" />
+                tools:text="Customer company :" />
+            <TextView
+                android:id="@+id/supplierName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="right" />
 
         </TableRow>
 
         <TableRow >
 
             <TextView
-                android:layout_column="0"
-                android:text="TextView"
-                android:layout_width="match_parent"
+                android:id="@+id/labelCreationDate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/productName"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="32dp"
-                android:id="@+id/creationDate" />
+                android:layout_marginRight="70dp"
+                android:layout_alignLeft="@+id/productName"
+                android:layout_below="@+id/productName"
+                tools:text="Received :" />
+            <TextView
+                android:id="@+id/creationDate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="right" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            xmlns:android="http://schemas.android.com/apk/res/android"
+
+            <TextView
+                android:text="Associate with my own product :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:layout_margin="5dp" />
 
         </TableRow>
 

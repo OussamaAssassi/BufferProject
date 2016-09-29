@@ -14,7 +14,7 @@ import com.example.oussa.transparency_one.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestActivity extends AppCompatActivity {
+public class VisibilityActivity extends AppCompatActivity {
 
     ListView mListView;
     TabHost tabHost;
@@ -31,7 +31,7 @@ public class RequestActivity extends AppCompatActivity {
 
         List<Product> productsAvailable = getProductsAvailable();
 
-        listView.setAdapter(new ProductsListAdapter(RequestActivity.this, productsAvailable));
+        listView.setAdapter(new ProductsListAdapter(VisibilityActivity.this, productsAvailable));
         TextView productNameTextView = (TextView) findViewById(R.id.productName);
         productNameTextView.setText(intent.getStringExtra("requestedProductName"));
         TextView supplierNameTextView = (TextView) findViewById(R.id.supplierName);
