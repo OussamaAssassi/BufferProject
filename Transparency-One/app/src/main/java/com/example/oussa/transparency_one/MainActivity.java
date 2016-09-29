@@ -9,6 +9,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.full_logo_big_tran);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         tabHost = (TabHost) findViewById(R.id.tabhost);
         //Important
@@ -49,39 +53,33 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(tab3);
 
         tabHost.setCurrentTab(0);
-
+        loadDataInTab("received");
 
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener(){
             @Override
             public void onTabChanged(String tabId) {
-                ListView listView;
-                List<Source> sources;
-                SourceAdapter adapter;
-                switch (tabId)
-                {
-                    case "received":
-                        listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
-                        sources = getSources(true);
-                        adapter = new SourceAdapter(MainActivity.this, sources);
-                        listView.setAdapter(adapter);
-                        break;
-                    case "sent":
-                        listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
-                        sources = getSources(false);
-                        adapter = new SourceAdapter(MainActivity.this, sources);
-                        listView.setAdapter(adapter);
-                        break;
-                    case "updates":
-                        break;
-                    default:
-                        break;
-
-                }
+                loadDataInTab(tabId);
             }});
 
     }
 
+    private void loadDataInTab(String tabId)
+    {
+        ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
+        List<Notification> notifications = getNotifications(tabId);
+        switch (tabId)
+        {
+            case "received":
+                listView.setAdapter(new ReceivedNotificationAdapter(MainActivity.this, notifications));
+                break;
+            case "sent":
+                listView.setAdapter(new SentNotificationAdapter(MainActivity.this, notifications));
+                break;
+        }
+
+
+    }
 
     private View createTabIndicator(String text) {
         View view = LayoutInflater.from(this).inflate(R.layout.tab_indicator, null);
@@ -91,34 +89,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private List<Source> getSources(Boolean lol){
-        if(lol)
+    private List<Notification> getNotifications(String notificationType){
+        if(notificationType == "received")
         {
-            List<Source> sources = new ArrayList<Source>();
-            sources.add(new Source("Toto 1", "Tata 1"));
-            sources.add(new Source("Toto 2", "Tata 2"));
-            sources.add(new Source("Toto 3", "Tata 3"));
-            sources.add(new Source("Toto 4", "Tata 4"));
-            sources.add(new Source("Toto 5", "Tata 5"));
-            return sources;
+            List<Notification> notifications = new ArrayList<Notification>();
+            notifications.add(new Notification("Paella", "Jumpy Fishes Ltd", new Date(), 1));
+            notifications.add(new Notification("Marshmallows, Strawberry Mallows", "Candies for us", new Date(), 1));
+            notifications.add(new Notification("Soy Yogurt Cherry", "Milk & co", new Date(), 1));
+            notifications.add(new Notification("Mayan Mocha Energy Drink", "Energy inc.", new Date(), 1));
+            notifications.add(new Notification("Lakewood Yellow Papaya Drink", "Drink corp", new Date(), 1));
+            return notifications;
 
+        }
+        else if(notificationType == "sent"){
+            List<Notification> notifications = new ArrayList<Notification>();
+            notifications.add(new Notification("Source 1", "Supplier 1", new Date(), 1));
+            notifications.add(new Notification("Source 2", "Supplier 2", new Date(), 1));
+            notifications.add(new Notification("Source 3", "Supplier 3", new Date(), 1));
+            notifications.add(new Notification("Source 4", "Supplier 4", new Date(), 1));
+            notifications.add(new Notification("Source 5", "Supplier 5", new Date(), 1));
+            return notifications;
         }
         else{
-            List<Source> sources = new ArrayList<Source>();
-            sources.add(new Source("Source 1", "Supplier 1"));
-            sources.add(new Source("Source 2", "Supplier 2"));
-            sources.add(new Source("Source 3", "Supplier 3"));
-            sources.add(new Source("Source 4", "Supplier 4"));
-            sources.add(new Source("Source 5", "Supplier 5"));
-            return sources;
-
+            return null;
         }
-    }
-
-    private void showListOfSources(){
-        List<Source> sources = getSources(true);
-
-        SourceAdapter adapter = new SourceAdapter(MainActivity.this, sources);
-        mListView.setAdapter(adapter);
     }
 }

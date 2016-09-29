@@ -3,6 +3,19 @@ package com.example.oussa.transparency_one;
 import java.util.Date;
 
 public class Notification {
+
+    private String productName;
+    private String supplierName;
+    private Date creationDate;
+    private int picture;
+
+    public Notification(String productName, String supplierName, Date creationDate, int pictureId) {
+        this.productName = productName;
+        this.supplierName = supplierName;
+        this.creationDate = creationDate;
+        this.picture = pictureId;
+    }
+
     public String getProductName() {
         return productName;
     }
@@ -23,18 +36,15 @@ public class Notification {
         this.creationDate = creationDate;
     }
 
-    public String getPicture() {
+    public int getPicture() {
         return picture;
     }
 
-    private String productName;
-    private String supplierName;
-    private Date creationDate;
-    private String picture;
+    public void setPicture(int picture) {
+        this.picture = picture;
+    }
 
-    public Notification(String productName, String supplierName) {
-        this.productName = sourceName;
-        this.supplierName = supplierName;
-
+    public String getSupplierName() {
+        return supplierName;
     }
 }

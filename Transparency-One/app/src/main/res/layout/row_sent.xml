@@ -6,24 +6,30 @@
     android:padding="10dp"
     >
 
-
-    <TextView
-        android:id="@+id/sourceName"
+    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/supplierName"
+        android:id="@+id/checkBox" />
+
+    <TextView
+        android:id="@+id/productName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-        tools:text="Source 1"
-        />
+        tools:text="Source 1" />
 
     <TextView
         android:id="@+id/supplierName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:layout_alignLeft="@+id/sourceName"
-        android:layout_below="@+id/sourceName"
-        tools:text="Supplier name"
-        />
+        android:layout_alignLeft="@+id/productName"
+        android:layout_below="@+id/productName"
+        tools:text="Supplier name" />
+
+
 
 </RelativeLayout>

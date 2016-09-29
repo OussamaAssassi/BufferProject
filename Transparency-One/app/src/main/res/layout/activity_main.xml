@@ -35,7 +35,6 @@
                 <!-- tab N°1 --> <!-- Inclusion of the interface -->
                 <include
                     android:id="@+id/i_layout_1"
-
                     layout="@layout/received_requests"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
