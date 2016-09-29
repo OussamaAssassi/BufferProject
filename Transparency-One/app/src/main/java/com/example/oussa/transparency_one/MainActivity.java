@@ -35,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
         // Set the Tab name and Activity
         // that will be opened when particular Tab will be selected
 
-        tab1.setIndicator(createTabIndicator("Received"));
+        tab1.setIndicator("Received");
         tab1.setContent(R.id.i_layout_1);
 
-        tab2.setIndicator(createTabIndicator("Sent"));
+        tab2.setIndicator("Sent");
         tab2.setContent(R.id.i_layout_2);
 
-        tab3.setIndicator(createTabIndicator("Updates"));
+        tab3.setIndicator("Updates");
         tab3.setContent(R.id.i_layout_3);
 
         /** Add the tabs  to the TabHost to display. */
