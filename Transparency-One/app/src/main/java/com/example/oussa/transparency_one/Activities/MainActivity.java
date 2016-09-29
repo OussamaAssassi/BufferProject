@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -23,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
     ListView mListView;
     TabHost tabHost;
+    ReceivedNotificationAdapter  receivedNotificationAdapter;
+    SentNotificationAdapter sentNotificationAdapter;
+    List<Notification> receivedNotifications;
+    List<Notification> sentNotifications;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().setTitle("My requests");
+
+        Button reminderButton = (Button)findViewById(R.id.button);
+
+        reminderButton.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
+                for (int i = 0; i < sentNotificationAdapter.getCount(); i++) {
+                    if(sentNotificationAdapter.checkedHolder[i]){
+                        //get all name values that checked by user
+                        sentNotifications.get(i).setCreationDate("just now");
+                        sentNotificationAdapter.checkedHolder[i] = false;
+                    }
+                }
+                sentNotificationAdapter.notifyDataSetChanged();
+
+            }
+        });
 
         tabHost = (TabHost) findViewById(R.id.tabhost);
         //Important
@@ -77,11 +102,12 @@ public class MainActivity extends AppCompatActivity {
     private void loadDataInTab(String tabId)
     {
         ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
-        List<Notification> notifications = getMockedNotifications(tabId);
         switch (tabId)
         {
             case "received":
-                listView.setAdapter(new ReceivedNotificationAdapter(MainActivity.this, notifications));
+                receivedNotifications = getMockedNotifications("received");
+                receivedNotificationAdapter = new ReceivedNotificationAdapter(MainActivity.this, receivedNotifications);
+                listView.setAdapter(receivedNotificationAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -96,7 +122,9 @@ public class MainActivity extends AppCompatActivity {
                 });
                 break;
             case "sent":
-                listView.setAdapter(new SentNotificationAdapter(MainActivity.this, notifications));
+                sentNotifications = getMockedNotifications("received");
+                sentNotificationAdapter = new SentNotificationAdapter(MainActivity.this, sentNotifications);
+                listView.setAdapter(sentNotificationAdapter);
                 break;
         }
     }
@@ -124,11 +152,11 @@ public class MainActivity extends AppCompatActivity {
 
             List<Notification> notifications = new ArrayList<Notification>();
 
-            notifications.add(new Notification("Source 1", "Supplier 1", "1 hour ago", 1));
-            notifications.add(new Notification("Source 2", "Supplier 2", "3 hours ago", 1));
-            notifications.add(new Notification("Source 3", "Supplier 3", "4 days ago", 1));
-            notifications.add(new Notification("Source 4", "Supplier 4", "1 week ago", 1));
-            notifications.add(new Notification("Source 5", "Supplier 5", "1 month ago", 1));
+            notifications.add(new Notification("Pizza dough", "Supplier 1", "1 hour ago", 1));
+            notifications.add(new Notification("Tomatoes", "Supplier 2", "3 hours ago", 1));
+            notifications.add(new Notification("Mushrooms", "Supplier 3", "4 days ago", 1));
+            notifications.add(new Notification("Ham", "Supplier 4", "1 week ago", 1));
+            notifications.add(new Notification("Pizza box", "Supplier 5", "1 month ago", 1));
             return notifications;
         }
         else{
