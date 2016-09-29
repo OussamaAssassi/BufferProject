@@ -26,6 +26,8 @@ public class RequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_detail);
 
+        getSupportActionBar().setTitle("Visibility request");
+
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
 
