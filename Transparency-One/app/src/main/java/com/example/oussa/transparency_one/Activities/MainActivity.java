@@ -11,9 +11,9 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.example.oussa.transparency_one.DTOs.Notification;
-import com.example.oussa.transparency_one.R;
 import com.example.oussa.transparency_one.DTOs.ReceivedNotificationAdapter;
 import com.example.oussa.transparency_one.DTOs.SentNotificationAdapter;
+import com.example.oussa.transparency_one.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setTitle("My requests");
 
         tabHost = (TabHost) findViewById(R.id.tabhost);
         //Important

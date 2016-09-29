@@ -18,6 +18,7 @@
         android:id="@+id/productName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="70dp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
@@ -27,7 +28,6 @@
         android:id="@+id/supplierName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="70dp"
         android:textColor="@android:color/black"
         android:layout_alignLeft="@+id/productName"
         android:layout_below="@+id/productName"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/productName"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="10dp"
         android:id="@+id/creationDate" />
 
 </RelativeLayout>
