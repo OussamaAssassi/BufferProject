@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -35,26 +35,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().setTitle("My requests");
-
-        Button reminderButton = (Button)findViewById(R.id.button);
-
-        reminderButton.setOnClickListener( new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
-                for (int i = 0; i < sentNotificationAdapter.getCount(); i++) {
-                    if(sentNotificationAdapter.checkedHolder[i]){
-                        //get all name values that checked by user
-                        sentNotifications.get(i).setCreationDate("just now");
-                        sentNotificationAdapter.checkedHolder[i] = false;
-                    }
-                }
-                sentNotificationAdapter.notifyDataSetChanged();
-
-            }
-        });
 
         tabHost = (TabHost) findViewById(R.id.tabhost);
         //Important
@@ -97,6 +77,29 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.send_reminder:
+                // User chose the "Settings" item, show the app settings UI...
+                ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
+                for (int i = 0; i < sentNotificationAdapter.getCount(); i++) {
+                    if(sentNotificationAdapter.checkedHolder[i]){
+                        //get all name values that checked by user
+                        sentNotifications.get(i).setCreationDate("just now");
+                        sentNotificationAdapter.checkedHolder[i] = false;
+                    }
+                }
+                sentNotificationAdapter.notifyDataSetChanged();
+                return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
     private void loadDataInTab(String tabId)
