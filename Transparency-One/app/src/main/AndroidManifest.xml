@@ -9,10 +9,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.oussa.transparency_one.MainActivity"
+            android:name=".MainActivity"
             android:icon="@mipmap/ic_launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RequestActivity"
+            android:icon="@mipmap/ic_launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.REQUEST" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

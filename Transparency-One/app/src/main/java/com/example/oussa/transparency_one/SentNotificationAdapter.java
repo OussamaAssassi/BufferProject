@@ -32,6 +32,7 @@ public class SentNotificationAdapter extends ArrayAdapter<Notification> {
             viewHolder = new NotificationViewHolder();
             viewHolder.productName = (TextView) convertView.findViewById(R.id.productName);
             viewHolder.supplierName = (TextView) convertView.findViewById(R.id.supplierName);
+            viewHolder.creationDate = (TextView) convertView.findViewById(R.id.creationDate);
             convertView.setTag(viewHolder);
         }
 
@@ -39,6 +40,7 @@ public class SentNotificationAdapter extends ArrayAdapter<Notification> {
         Notification notification = getItem(position);
         viewHolder.productName.setText(notification.getProductName());
         viewHolder.supplierName.setText(notification.getSupplierName());
+        viewHolder.creationDate.setText(notification.getCreationDate());
 
         return convertView;
     }
@@ -46,5 +48,6 @@ public class SentNotificationAdapter extends ArrayAdapter<Notification> {
     private class NotificationViewHolder{
         public TextView productName;
         public TextView supplierName;
+        public TextView creationDate;
     }
 }

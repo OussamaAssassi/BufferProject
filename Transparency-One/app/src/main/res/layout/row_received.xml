@@ -8,10 +8,9 @@
 
     <ImageView
         android:contentDescription="row"
-        android:id="@+id/icon"
+        android:id="@+id/picture"
         android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/logo_big" >
+        android:layout_height="60dp">
     </ImageView>
 
 
@@ -33,5 +32,14 @@
         android:layout_alignLeft="@+id/productName"
         android:layout_below="@+id/productName"
         tools:text="Supplier name" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/productName"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="32dp"
+        android:id="@+id/creationDate" />
 
 </RelativeLayout>
