@@ -3,6 +3,7 @@ package com.example.oussa.transparency_one.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -27,6 +28,8 @@ public class RequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_detail);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         getSupportActionBar().setTitle("Visibility request answer - Step 1");
 
@@ -58,11 +61,19 @@ public class RequestActivity extends AppCompatActivity {
         supplierNameTextView.setText(notification.getSupplierName());
         TextView creationDateTextView = (TextView) findViewById(R.id.creationDate);
         creationDateTextView.setText(notification.getCreationDate());
+    }
 
-//        productNameTextView.setText(intent.getStringExtra("requestedProductName"));
-//        TextView supplierNameTextView = (TextView) findViewById(R.id.customerName);
-//        supplierNameTextView.setText(intent.getStringExtra("companyName"));
-//        TextView creationDateTextView = (TextView) findViewById(R.id.creationDate);
-//        creationDateTextView.setText(intent.getStringExtra("date"));
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
