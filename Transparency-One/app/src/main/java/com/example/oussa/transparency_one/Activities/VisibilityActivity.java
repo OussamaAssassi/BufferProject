@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TabHost;
 
 import com.example.oussa.transparency_one.Adapters.VisibilitiesListAdapter;
+import com.example.oussa.transparency_one.NotificationsService;
 import com.example.oussa.transparency_one.R;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class VisibilityActivity extends AppCompatActivity {
 
     ListView mListView;
     TabHost tabHost;
+    int notificationPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,9 @@ public class VisibilityActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Visibility request answer - Step 2");
 
         Intent intent = getIntent();
-        Bundle b = intent.getExtras();
+
+        notificationPosition = Integer.parseInt(intent.getStringExtra("notificationPosition"));
+
 
         ListView listView = (ListView) findViewById(R.id.visibilitiesListView);
 
@@ -40,8 +44,12 @@ public class VisibilityActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                NotificationsService notificationService = new NotificationsService(VisibilityActivity.this.getApplicationContext());
+                notificationService.fulFilReceivedNotification(notificationPosition);
                 Intent myIntent = new Intent(VisibilityActivity.this, MainActivity.class);
+
                 VisibilityActivity.this.startActivity(myIntent);
+
             }
         });
 

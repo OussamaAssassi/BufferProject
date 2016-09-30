@@ -148,9 +148,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(MainActivity.this, RequestActivity.class);
                 myIntent.putExtra("notificationPosition", Integer.toString(position));
-//                myIntent.putExtra("requestedProductName", notification.getProductName());
-//                myIntent.putExtra("companyName", notification.getSupplierName());
-//                myIntent.putExtra("date", notification.getCreationDate());
 
                 MainActivity.this.startActivity(myIntent);
             }

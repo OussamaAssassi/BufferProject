@@ -17,12 +17,14 @@ import com.example.oussa.transparency_one.NotificationsService;
 import com.example.oussa.transparency_one.ProductsService;
 import com.example.oussa.transparency_one.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RequestActivity extends AppCompatActivity {
 
     ListView mListView;
     TabHost tabHost;
+    int notificationPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class RequestActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(RequestActivity.this, VisibilityActivity.class);
+                myIntent.putExtra("notificationPosition", Integer.toString(notificationPosition));
                 RequestActivity.this.startActivity(myIntent);
             }
         });
@@ -50,11 +53,16 @@ public class RequestActivity extends AppCompatActivity {
         productsListView.setAdapter(new ProductsListAdapter(RequestActivity.this, productsAvailable));
 
         NotificationsService notificationService = new NotificationsService(RequestActivity.this.getApplicationContext());
-        List<Notification> notifs = notificationService.getReceivedNotifications();
-        int notificationPosition = Integer.parseInt(intent.getStringExtra("notificationPosition"));
-        Notification notification = notifs.get(notificationPosition);
+        List<Notification> allNotifs = notificationService.getReceivedNotifications();
+        List<Notification> notFullfilledNotifs = new ArrayList<Notification>();
+        for(Notification n : allNotifs)
+        {
+            if(!n.getWasFulfilled())
+                notFullfilledNotifs.add(n);
+        }
+        notificationPosition = Integer.parseInt(intent.getStringExtra("notificationPosition"));
+        Notification notification = notFullfilledNotifs.get(notificationPosition);
 
-        notificationService.fulFilReceivedNotification(notificationPosition);
         TextView productNameTextView = (TextView) findViewById(R.id.productName);
         productNameTextView.setText(notification.getProductName());
         TextView supplierNameTextView = (TextView) findViewById(R.id.customerName);
