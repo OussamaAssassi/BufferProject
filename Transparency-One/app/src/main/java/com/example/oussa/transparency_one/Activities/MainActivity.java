@@ -1,8 +1,13 @@
 package com.example.oussa.transparency_one.Activities;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +26,8 @@ import com.example.oussa.transparency_one.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
             public void onTabChanged(String tabId) {
                 loadTab(tabId);
             }});
+
+
+        MyTimerTask myTask = new MyTimerTask();
+        Timer myTimer = new Timer();
+        myTimer.schedule(myTask, 10000, 500000000);
     }
 
     @Override
@@ -172,5 +184,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    class MyTimerTask extends TimerTask {
+        public void run() {
+
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(MainActivity.this);
+            mBuilder.setSmallIcon(R.drawable.logo_big);
+            mBuilder.setContentTitle("New visibility request from Jumpy Fishes Ltd");
+            mBuilder.setContentText("Can you provide more visibility on Paella?");
+
+            Intent resultIntent = new Intent(MainActivity.this, RequestActivity.class);
+            resultIntent.putExtra("notificationPosition", "0");
+
+            // The stack builder object will contain an artificial back stack for the
+            // started Activity.
+            // This ensures that navigating backward from the Activity leads out of
+            // your application to the Home screen.
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(MainActivity.this);
+            // Adds the back stack for the Intent (but not the Intent itself)
+            stackBuilder.addParentStack(MainActivity.class);
+            // Adds the Intent that starts the Activity to the top of the stack
+            stackBuilder.addNextIntent(resultIntent);
+            PendingIntent resultPendingIntent =
+                    stackBuilder.getPendingIntent(
+                            0,
+                            PendingIntent.FLAG_UPDATE_CURRENT
+                    );
+            mBuilder.setContentIntent(resultPendingIntent);
+            NotificationManager mNotificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            // mId allows you to update the notification later on
+            int mId = 0;
+            mNotificationManager.notify(mId, mBuilder.build());
+        }
     }
 }

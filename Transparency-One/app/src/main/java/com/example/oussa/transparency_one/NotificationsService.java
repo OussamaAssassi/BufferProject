@@ -31,7 +31,7 @@ public class NotificationsService {
     {
         List<Notification> receivedNotifications;
         receivedNotifications = new ArrayList<Notification>();
-        receivedNotifications.add(new Notification("Paella", "Jumpy Fishes Ltd", "2 hours ago", R.drawable.hands_icon));
+        receivedNotifications.add(new Notification("Paella", "Jumpy Fishes Ltd", "Just now", R.drawable.hands_icon));
         receivedNotifications.add(new Notification("Marshmallows", "Candies for us", "4 hours ago", R.drawable.eye_icon));
         receivedNotifications.add(new Notification("Yogurt Cherry", "Milk & co", "1 day ago", R.drawable.hands_icon));
         receivedNotifications.add(new Notification("Mayan Drink", "Energy inc.", "1 week ago", R.drawable.hands_icon));
