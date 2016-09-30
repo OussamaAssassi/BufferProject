@@ -3,21 +3,22 @@ package com.example.oussa.transparency_one.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.TextView;
 
 import com.example.oussa.transparency_one.DTOs.Notification;
+import com.example.oussa.transparency_one.DTOs.Product;
+import com.example.oussa.transparency_one.DTOs.ProductsListAdapter;
 import com.example.oussa.transparency_one.DTOs.ReceivedNotificationAdapter;
 import com.example.oussa.transparency_one.DTOs.SentNotificationAdapter;
+import com.example.oussa.transparency_one.NotificationsService;
+import com.example.oussa.transparency_one.ProductsService;
 import com.example.oussa.transparency_one.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     SentNotificationAdapter sentNotificationAdapter;
     List<Notification> receivedNotifications;
     List<Notification> sentNotifications;
+
+    NotificationsService notificationsService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(tab3);
 
         tabHost.setCurrentTab(0);
-        loadDataInTab("received");
+        loadTab("received");
 
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener(){
             @Override
             public void onTabChanged(String tabId) {
-                loadDataInTab(tabId);
+                loadTab(tabId);
             }});
     }
 
@@ -102,68 +105,59 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void loadDataInTab(String tabId)
+    private void loadTab(String tabId)
     {
-        ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
         switch (tabId)
         {
             case "received":
-                receivedNotifications = getMockedNotifications("received");
-                receivedNotificationAdapter = new ReceivedNotificationAdapter(MainActivity.this, receivedNotifications);
-                listView.setAdapter(receivedNotificationAdapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent myIntent = new Intent(MainActivity.this, RequestActivity.class);
-                        Notification notification = (Notification) parent.getItemAtPosition(position);
-                        myIntent.putExtra("requestedProductName", notification.getProductName());
-                        myIntent.putExtra("companyName", notification.getSupplierName());
-                        myIntent.putExtra("date", notification.getCreationDate());
-
-                        MainActivity.this.startActivity(myIntent);
-                    }
-                });
+                loadReceivedRequests();
                 break;
             case "sent":
-                sentNotifications = getMockedNotifications("received");
-                sentNotificationAdapter = new SentNotificationAdapter(MainActivity.this, sentNotifications);
-                listView.setAdapter(sentNotificationAdapter);
+                loadSentRequests();
+                break;
+            case "updates":
+                loadUpdates();
                 break;
         }
     }
 
-    private View createTabIndicator(String text) {
-        View view = LayoutInflater.from(this).inflate(R.layout.tab_indicator, null);
-        TextView textView = (TextView) view.findViewById(R.id.tv_indicator_label);
-        textView.setText(text);
-        return view;
+    private void loadReceivedRequests()
+    {
+        ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
+        notificationsService = new NotificationsService();
+        receivedNotifications = notificationsService.getMockedNotifications("received");
+        receivedNotificationAdapter = new ReceivedNotificationAdapter(MainActivity.this, receivedNotifications);
+        listView.setAdapter(receivedNotificationAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(MainActivity.this, RequestActivity.class);
+                Notification notification = (Notification) parent.getItemAtPosition(position);
+                myIntent.putExtra("requestedProductName", notification.getProductName());
+                myIntent.putExtra("companyName", notification.getSupplierName());
+                myIntent.putExtra("date", notification.getCreationDate());
+
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
     }
 
-    private List<Notification> getMockedNotifications(String notificationType){
-        if(notificationType == "received")
-        {
-            List<Notification> notifications = new ArrayList<Notification>();
-            notifications.add(new Notification("Paella", "Jumpy Fishes Ltd", "2 hours ago", R.drawable.hands_icon));
-            notifications.add(new Notification("Marshmallows", "Candies for us", "4 hours ago", R.drawable.eye_icon));
-            notifications.add(new Notification("Yogurt Cherry", "Milk & co", "1 day ago", R.drawable.hands_icon));
-            notifications.add(new Notification("Mayan Drink", "Energy inc.", "1 week ago", R.drawable.hands_icon));
-            notifications.add(new Notification("Lakewood Drink", "Drink corp", "2 months ago", R.drawable.eye_icon));
-            return notifications;
+    private void loadSentRequests()
+    {
+        ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
+        notificationsService = new NotificationsService();
+        sentNotifications = notificationsService.getMockedNotifications("received");
+        sentNotificationAdapter = new SentNotificationAdapter(MainActivity.this, sentNotifications);
+        listView.setAdapter(sentNotificationAdapter);
+    }
 
-        }
-        else if(notificationType == "sent"){
+    private void loadUpdates()
+    {
+        ListView productsListView = (ListView) tabHost.getCurrentView().findViewById(R.id.productsListView);
+        ProductsService productsService = new ProductsService();
+        List<Product> problematicProducts = productsService.getProblematicProducts();
+        ProductsListAdapter productListAdapter = new ProductsListAdapter(MainActivity.this, problematicProducts);
+        productsListView.setAdapter(productListAdapter);
 
-            List<Notification> notifications = new ArrayList<Notification>();
-
-            notifications.add(new Notification("Pizza dough", "Supplier 1", "1 hour ago", 1));
-            notifications.add(new Notification("Tomatoes", "Supplier 2", "3 hours ago", 1));
-            notifications.add(new Notification("Mushrooms", "Supplier 3", "4 days ago", 1));
-            notifications.add(new Notification("Ham", "Supplier 4", "1 week ago", 1));
-            notifications.add(new Notification("Pizza box", "Supplier 5", "1 month ago", 1));
-            return notifications;
-        }
-        else{
-            return null;
-        }
     }
 }

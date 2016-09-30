@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.oussa.transparency_one.DTOs.Product;
 import com.example.oussa.transparency_one.DTOs.ProductsListAdapter;
+import com.example.oussa.transparency_one.ProductsService;
 import com.example.oussa.transparency_one.R;
 
 import java.util.ArrayList;
@@ -40,7 +41,8 @@ public class RequestActivity extends AppCompatActivity {
                 RequestActivity.this.startActivity(myIntent);
             }
         });
-        List<Product> productsAvailable = getProductsAvailable();
+        ProductsService productsService = new ProductsService();
+        List<Product> productsAvailable = productsService.getProductsAvailable();
 
         productsListView.setAdapter(new ProductsListAdapter(RequestActivity.this, productsAvailable));
         TextView productNameTextView = (TextView) findViewById(R.id.productName);
@@ -49,15 +51,5 @@ public class RequestActivity extends AppCompatActivity {
         supplierNameTextView.setText(intent.getStringExtra("companyName"));
         TextView creationDateTextView = (TextView) findViewById(R.id.creationDate);
         creationDateTextView.setText(intent.getStringExtra("date"));
-    }
-    private List<Product> getProductsAvailable()
-    {
-        List<Product> products = new ArrayList<Product>();
-        products.add(new Product("Own Paella"));
-        products.add(new Product("Own  Marshmallows"));
-        products.add(new Product("Own Yogurt Cherry"));
-        products.add(new Product("Own Mayan Drink"));
-        products.add(new Product("Own Lakewood Drink"));
-        return products;
     }
 }

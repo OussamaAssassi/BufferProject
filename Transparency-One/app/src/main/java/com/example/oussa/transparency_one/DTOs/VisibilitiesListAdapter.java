@@ -35,7 +35,6 @@ public class VisibilitiesListAdapter extends ArrayAdapter<String> {
             convertView.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Source> sources
         String visibility = getItem(position);
         viewHolder.name.setText(visibility);
 

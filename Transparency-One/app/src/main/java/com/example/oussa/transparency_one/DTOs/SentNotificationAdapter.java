@@ -40,7 +40,6 @@ public class SentNotificationAdapter extends ArrayAdapter<Notification> {
             convertView.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Source> sources
         Notification notification = getItem(position);
         viewHolder.productName.setText(notification.getProductName());
         viewHolder.supplierName.setText(notification.getSupplierName());

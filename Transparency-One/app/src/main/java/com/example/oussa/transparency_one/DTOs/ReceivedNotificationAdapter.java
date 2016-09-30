@@ -4,14 +4,13 @@ package com.example.oussa.transparency_one.DTOs;
  * Created by oussa on 28/09/2016.
  */
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.LayoutInflater;
 
-import com.example.oussa.transparency_one.DTOs.Notification;
 import com.example.oussa.transparency_one.R;
 
 import java.util.List;
@@ -40,7 +39,6 @@ public class ReceivedNotificationAdapter extends ArrayAdapter<Notification> {
             convertView.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Source> sources
         Notification notification = getItem(position);
         viewHolder.productName.setText(notification.getProductName());
         viewHolder.supplierName.setText(notification.getSupplierName());
