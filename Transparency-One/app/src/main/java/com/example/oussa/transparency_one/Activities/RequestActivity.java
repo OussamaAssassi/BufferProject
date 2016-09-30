@@ -9,8 +9,10 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.example.oussa.transparency_one.DTOs.Product;
 import com.example.oussa.transparency_one.Adapters.ProductsListAdapter;
+import com.example.oussa.transparency_one.DTOs.Notification;
+import com.example.oussa.transparency_one.DTOs.Product;
+import com.example.oussa.transparency_one.NotificationsService;
 import com.example.oussa.transparency_one.ProductsService;
 import com.example.oussa.transparency_one.R;
 
@@ -29,7 +31,6 @@ public class RequestActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Visibility request answer - Step 1");
 
         Intent intent = getIntent();
-        Bundle b = intent.getExtras();
 
         ListView productsListView = (ListView) findViewById(R.id.productsListView);
 
@@ -44,11 +45,24 @@ public class RequestActivity extends AppCompatActivity {
         List<Product> productsAvailable = productsService.getProductsAvailable();
 
         productsListView.setAdapter(new ProductsListAdapter(RequestActivity.this, productsAvailable));
+
+        NotificationsService notificationService = new NotificationsService(RequestActivity.this.getApplicationContext());
+        List<Notification> notifs = notificationService.getReceivedNotifications();
+        int notificationPosition = Integer.parseInt(intent.getStringExtra("notificationPosition"));
+        Notification notification = notifs.get(notificationPosition);
+
+        notificationService.fulFilReceivedNotification(notificationPosition);
         TextView productNameTextView = (TextView) findViewById(R.id.productName);
-        productNameTextView.setText(intent.getStringExtra("requestedProductName"));
+        productNameTextView.setText(notification.getProductName());
         TextView supplierNameTextView = (TextView) findViewById(R.id.customerName);
-        supplierNameTextView.setText(intent.getStringExtra("companyName"));
+        supplierNameTextView.setText(notification.getSupplierName());
         TextView creationDateTextView = (TextView) findViewById(R.id.creationDate);
-        creationDateTextView.setText(intent.getStringExtra("date"));
+        creationDateTextView.setText(notification.getCreationDate());
+
+//        productNameTextView.setText(intent.getStringExtra("requestedProductName"));
+//        TextView supplierNameTextView = (TextView) findViewById(R.id.customerName);
+//        supplierNameTextView.setText(intent.getStringExtra("companyName"));
+//        TextView creationDateTextView = (TextView) findViewById(R.id.creationDate);
+//        creationDateTextView.setText(intent.getStringExtra("date"));
     }
 }

@@ -10,15 +10,16 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 
-import com.example.oussa.transparency_one.DTOs.Notification;
-import com.example.oussa.transparency_one.DTOs.Product;
 import com.example.oussa.transparency_one.Adapters.ProductsListAdapter;
 import com.example.oussa.transparency_one.Adapters.ReceivedNotificationAdapter;
 import com.example.oussa.transparency_one.Adapters.SentNotificationAdapter;
+import com.example.oussa.transparency_one.DTOs.Notification;
+import com.example.oussa.transparency_one.DTOs.Product;
 import com.example.oussa.transparency_one.NotificationsService;
 import com.example.oussa.transparency_one.ProductsService;
 import com.example.oussa.transparency_one.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -118,18 +119,27 @@ public class MainActivity extends AppCompatActivity {
     private void loadReceivedRequests()
     {
         ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
-        notificationsService = new NotificationsService();
-        receivedNotifications = notificationsService.getMockedNotifications("received");
-        receivedNotificationAdapter = new ReceivedNotificationAdapter(MainActivity.this, receivedNotifications);
+        notificationsService = new NotificationsService(MainActivity.this.getApplicationContext());
+
+        receivedNotifications = notificationsService.getReceivedNotifications();
+        List<Notification> reducedListOfNotificationsNotFullfilled = new ArrayList<Notification>();
+        for(Notification n : receivedNotifications)
+        {
+            if(!n.getWasFulfilled())
+                reducedListOfNotificationsNotFullfilled.add(n);
+        }
+
+
+        receivedNotificationAdapter = new ReceivedNotificationAdapter(MainActivity.this, reducedListOfNotificationsNotFullfilled);
         listView.setAdapter(receivedNotificationAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(MainActivity.this, RequestActivity.class);
-                Notification notification = (Notification) parent.getItemAtPosition(position);
-                myIntent.putExtra("requestedProductName", notification.getProductName());
-                myIntent.putExtra("companyName", notification.getSupplierName());
-                myIntent.putExtra("date", notification.getCreationDate());
+                myIntent.putExtra("notificationPosition", Integer.toString(position));
+//                myIntent.putExtra("requestedProductName", notification.getProductName());
+//                myIntent.putExtra("companyName", notification.getSupplierName());
+//                myIntent.putExtra("date", notification.getCreationDate());
 
                 MainActivity.this.startActivity(myIntent);
             }
@@ -139,8 +149,8 @@ public class MainActivity extends AppCompatActivity {
     private void loadSentRequests()
     {
         ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
-        notificationsService = new NotificationsService();
-        sentNotifications = notificationsService.getMockedNotifications("received");
+        notificationsService = new NotificationsService(MainActivity.this.getApplicationContext());
+        sentNotifications = notificationsService.getSentNotifications();
         sentNotificationAdapter = new SentNotificationAdapter(MainActivity.this, sentNotifications);
         listView.setAdapter(sentNotificationAdapter);
     }
