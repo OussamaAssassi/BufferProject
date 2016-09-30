@@ -33,7 +33,7 @@ public class RequestActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        getSupportActionBar().setTitle("Visibility request answer - Step 1");
+        getSupportActionBar().setTitle("Request answer - Step 1");
 
         Intent intent = getIntent();
 

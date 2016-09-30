@@ -29,7 +29,7 @@ public class VisibilityActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        getSupportActionBar().setTitle("Visibility request answer - Step 2");
+        getSupportActionBar().setTitle("Request answer - Step 2");
 
         Intent intent = getIntent();
 
