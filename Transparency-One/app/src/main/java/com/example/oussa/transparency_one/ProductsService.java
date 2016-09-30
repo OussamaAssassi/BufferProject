@@ -25,7 +25,7 @@ public class ProductsService {
     {
         List<Product> products = new ArrayList<Product>();
         products.add(new Product("Hoodies", R.drawable.distribution_icon));
-        products.add(new Product("Mushrooms", R.drawable.manufacturing_icon));
+        products.add(new Product("Marshmallows", R.drawable.manufacturing_icon));
         return products;
     }
 }
