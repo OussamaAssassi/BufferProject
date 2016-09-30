@@ -24,7 +24,7 @@ public class VisibilityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chose_visibility);
 
-        getSupportActionBar().setTitle("Visibility levels");
+        getSupportActionBar().setTitle("Visibility request answer (2/2)");
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();

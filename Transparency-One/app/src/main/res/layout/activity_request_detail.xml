@@ -18,19 +18,11 @@
         android:padding="10dp">
 
         <TextView
-            android:layout_column="0"
-            android:text="Customer visibility request"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:id="@+id/labelPageTitle"
-            android:layout_marginBottom="6dp" />
-
-        <TextView
             android:id="@+id/labelCustomerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Customer company"
+            android:layout_marginTop="10dp"
+            android:text="Company Name"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
 
         <TextView
@@ -45,6 +37,7 @@
             android:layout_width="match_parent"
             android:text="Customer product name"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
 
         <TextView
@@ -59,7 +52,8 @@
             android:id="@+id/labelCreationDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Date received"
+            android:layout_marginTop="10dp"
+            android:text="Date received"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
 
         <TextView
@@ -71,10 +65,12 @@
 
         <TextView
             android:id="@+id/labelProductChoice"
-            android:text="Associate with my own product :"
+            android:text="Select my product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:textSize="17sp" />
 
         <ListView
             android:layout_column="0"
