@@ -11,7 +11,7 @@
         android:name="GlobalVariable">
         <activity
             android:name=".Activities.MainActivity"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@drawable/logo_big">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,7 +19,7 @@
         </activity>
         <activity
             android:name=".Activities.RequestActivity"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@drawable/logo_big">
             <intent-filter>
                 <action android:name="android.intent.action.REQUEST" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".Activities.VisibilityActivity"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@drawable/logo_big">
             <intent-filter>
                 <action android:name="android.intent.action.VISIBILITY" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -35,7 +35,7 @@
         </activity>
         <activity
             android:name=".Activities.ComponentActivity"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@drawable/logo_big">
             <intent-filter>
                 <action android:name="android.intent.action.COMPONENT" />
                 <category android:name="android.intent.category.LAUNCHER" />
