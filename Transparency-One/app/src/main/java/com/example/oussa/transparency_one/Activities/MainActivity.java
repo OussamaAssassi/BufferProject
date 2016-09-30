@@ -165,10 +165,16 @@ public class MainActivity extends AppCompatActivity {
         productsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myIntent = new Intent(MainActivity.this, ComponentActivity.class);
-                myIntent.putExtra("notificationPosition", Integer.toString(position));
-
-                MainActivity.this.startActivity(myIntent);
+                if(position == 0) {
+                    Intent myIntent = new Intent(MainActivity.this, ComponentActivity.class);
+                    myIntent.putExtra("position", Integer.toString(position));
+                    MainActivity.this.startActivity(myIntent);
+                }
+                if(position == 1) {
+                    Intent myIntent = new Intent(MainActivity.this, Component2Activity.class);
+                    myIntent.putExtra("position", Integer.toString(position));
+                    MainActivity.this.startActivity(myIntent);
+                }
             }
         });
 

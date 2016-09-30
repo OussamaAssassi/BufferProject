@@ -41,6 +41,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activities.Component2Activity"
+            android:icon="@drawable/logo_big">
+            <intent-filter>
+                <action android:name="android.intent.action.COMPONENT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

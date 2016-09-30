@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="Transparency-one"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="#fff"
+    tools:context="com.example.oussa.transparency_one.Activities.ComponentActivity">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="Glucose syrup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textSize="17sp" />
+
+        <ListView
+            android:id="@+id/componentsListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pageTitle"
+            android:layout_marginLeft="0dp" />
+
+        <TextView
+            android:text="Sugar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textSize="17sp" />
+
+        <ListView
+            android:id="@+id/componentsListView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pageTitle"
+            android:layout_marginLeft="0dp" />
+
+        <TextView
+            android:text="Carmine coloring"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textSize="17sp" />
+
+        <ListView
+            android:id="@+id/componentsListView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pageTitle"
+            android:layout_marginLeft="0dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
