@@ -1,4 +1,4 @@
-package com.example.oussa.transparency_one.DTOs;
+package com.example.oussa.transparency_one.Adapters;
 
 /**
  * Created by oussa on 28/09/2016.
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.oussa.transparency_one.DTOs.Product;
 import com.example.oussa.transparency_one.R;
 
 import java.util.List;

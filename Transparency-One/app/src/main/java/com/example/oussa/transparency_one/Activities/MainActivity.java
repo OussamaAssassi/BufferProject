@@ -12,9 +12,9 @@ import android.widget.TabHost;
 
 import com.example.oussa.transparency_one.DTOs.Notification;
 import com.example.oussa.transparency_one.DTOs.Product;
-import com.example.oussa.transparency_one.DTOs.ProductsListAdapter;
-import com.example.oussa.transparency_one.DTOs.ReceivedNotificationAdapter;
-import com.example.oussa.transparency_one.DTOs.SentNotificationAdapter;
+import com.example.oussa.transparency_one.Adapters.ProductsListAdapter;
+import com.example.oussa.transparency_one.Adapters.ReceivedNotificationAdapter;
+import com.example.oussa.transparency_one.Adapters.SentNotificationAdapter;
 import com.example.oussa.transparency_one.NotificationsService;
 import com.example.oussa.transparency_one.ProductsService;
 import com.example.oussa.transparency_one.R;
@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
         TabHost.TabSpec tab2 = tabHost.newTabSpec("sent");
         TabHost.TabSpec tab3 = tabHost.newTabSpec("updates");
 
-        // Set the Tab name and Activity
-        // that will be opened when particular Tab will be selected
-
         tab1.setIndicator("Received");
         tab1.setContent(R.id.i_layout_1);
 
@@ -60,14 +57,12 @@ public class MainActivity extends AppCompatActivity {
         tab3.setIndicator("Updates");
         tab3.setContent(R.id.i_layout_3);
 
-        /** Add the tabs  to the TabHost to display. */
         tabHost.addTab(tab1);
         tabHost.addTab(tab2);
         tabHost.addTab(tab3);
 
         tabHost.setCurrentTab(0);
         loadTab("received");
-
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener(){
             @Override

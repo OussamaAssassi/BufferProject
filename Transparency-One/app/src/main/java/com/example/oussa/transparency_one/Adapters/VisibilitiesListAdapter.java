@@ -1,4 +1,4 @@
-package com.example.oussa.transparency_one.DTOs;
+package com.example.oussa.transparency_one.Adapters;
 
 /**
  * Created by oussa on 28/09/2016.

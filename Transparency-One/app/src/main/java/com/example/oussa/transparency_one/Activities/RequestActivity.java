@@ -10,11 +10,10 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.example.oussa.transparency_one.DTOs.Product;
-import com.example.oussa.transparency_one.DTOs.ProductsListAdapter;
+import com.example.oussa.transparency_one.Adapters.ProductsListAdapter;
 import com.example.oussa.transparency_one.ProductsService;
 import com.example.oussa.transparency_one.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RequestActivity extends AppCompatActivity {

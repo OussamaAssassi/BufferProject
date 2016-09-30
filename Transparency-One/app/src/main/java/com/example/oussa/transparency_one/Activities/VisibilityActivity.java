@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 
-import com.example.oussa.transparency_one.DTOs.VisibilitiesListAdapter;
+import com.example.oussa.transparency_one.Adapters.VisibilitiesListAdapter;
 import com.example.oussa.transparency_one.R;
 
 import java.util.ArrayList;
