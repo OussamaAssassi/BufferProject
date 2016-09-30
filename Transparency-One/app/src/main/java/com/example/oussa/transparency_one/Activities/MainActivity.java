@@ -163,5 +163,15 @@ public class MainActivity extends AppCompatActivity {
         ProductsListAdapter productListAdapter = new ProductsListAdapter(MainActivity.this, problematicProducts);
         productsListView.setAdapter(productListAdapter);
 
+        productsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(MainActivity.this, ComponentActivity.class);
+                myIntent.putExtra("notificationPosition", Integer.toString(position));
+
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
+
     }
 }

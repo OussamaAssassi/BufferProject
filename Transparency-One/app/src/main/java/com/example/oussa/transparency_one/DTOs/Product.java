@@ -11,6 +11,12 @@ public class Product {
         this.picture = picture;
     }
 
+    public Product(String productName, int picture, int statusPicture) {
+        this.name = productName;
+        this.picture = picture;
+        this.statusPicture = statusPicture;
+    }
+
     public String getName() {
         return name;
     }
@@ -27,7 +33,16 @@ public class Product {
         this.picture = picture;
     }
 
+
+    public int getStatusPicture() {
+        return statusPicture;
+    }
+
+    public void setStatusPicture(int statusPicture) {
+        this.statusPicture = statusPicture;
+    }
+
     private String name;
     private int picture;
-
+    private int statusPicture;
 }
