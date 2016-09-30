@@ -45,6 +45,7 @@ public class SentNotificationAdapter extends ArrayAdapter<Notification> {
         viewHolder.productName.setText(notification.getProductName());
         viewHolder.supplierName.setText(notification.getSupplierName());
         viewHolder.creationDate.setText(notification.getCreationDate());
+        viewHolder.checkBox.setChecked(notification.getSelected());
         createCheckedHolder();
         viewHolder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

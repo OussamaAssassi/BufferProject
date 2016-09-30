@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 ListView listView = (ListView) tabHost.getCurrentView().findViewById(R.id.listView);
                 for (int i = 0; i < sentNotificationAdapter.getCount(); i++) {
                     if(sentNotificationAdapter.checkedHolder[i]){
-                        //get all name values that checked by user
                         sentNotifications.get(i).setCreationDate("just now");
                         sentNotificationAdapter.checkedHolder[i] = false;
                     }
