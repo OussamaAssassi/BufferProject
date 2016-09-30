@@ -6,8 +6,9 @@ package com.example.oussa.transparency_one.DTOs;
 
 public class Product {
 
-    public Product(String productName) {
+    public Product(String productName, int picture) {
         this.name = productName;
+        this.picture = picture;
     }
 
     public String getName() {
@@ -18,6 +19,15 @@ public class Product {
         this.name = name;
     }
 
+    public int getPicture() {
+        return picture;
+    }
+
+    public void setPicture(int picture) {
+        this.picture = picture;
+    }
+
     private String name;
+    private int picture;
 
 }

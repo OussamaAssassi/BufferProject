@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.oussa.transparency_one.DTOs.Product;
@@ -33,16 +34,18 @@ public class ProductsListAdapter extends ArrayAdapter<Product> {
         if(viewHolder == null){
             viewHolder = new ProductViewHolder();
             viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+            viewHolder.picture = (ImageView) convertView.findViewById(R.id.picture);
             convertView.setTag(viewHolder);
         }
 
         Product product = getItem(position);
         viewHolder.name.setText(product.getName());
-
+        viewHolder.picture.setImageResource(product.getPicture());
         return convertView;
     }
 
     private class ProductViewHolder{
         public TextView name;
+        public ImageView picture;
     }
 }

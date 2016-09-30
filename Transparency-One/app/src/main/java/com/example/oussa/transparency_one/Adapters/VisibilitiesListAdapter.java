@@ -25,7 +25,7 @@ public class VisibilitiesListAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_product,parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_visibilitylevel,parent, false);
         }
 
         VisibilityViewHolder viewHolder = (VisibilityViewHolder) convertView.getTag();
