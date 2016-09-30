@@ -35,19 +35,19 @@
                 <!-- tab N°1 --> <!-- Inclusion of the interface -->
                 <include
                     android:id="@+id/i_layout_1"
-                    layout="@layout/received_requests"
+                    layout="@layout/tab_received_requests"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
                 <!-- tab N°2 --> <!-- Inclusion of the interface -->
                 <include
                     android:id="@+id/i_layout_2"
-                    layout="@layout/sent_requests"
+                    layout="@layout/tab_sent_requests"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <!-- tab N°3 --> <!-- Inclusion of the interface -->
                 <include
                     android:id="@+id/i_layout_3"
-                    layout="@layout/activity_updates"
+                    layout="@layout/tab_updates"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </FrameLayout>
