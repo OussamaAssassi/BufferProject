@@ -11,10 +11,11 @@ public class Product {
         this.picture = picture;
     }
 
-    public Product(String productName, int picture, int statusPicture) {
+
+    public Product(String productName, String supplierName, int picture) {
         this.name = productName;
+        this.supplierName = supplierName;
         this.picture = picture;
-        this.statusPicture = statusPicture;
     }
 
     public String getName() {
@@ -25,6 +26,14 @@ public class Product {
         this.name = name;
     }
 
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
+    }
+
     public int getPicture() {
         return picture;
     }
@@ -33,16 +42,7 @@ public class Product {
         this.picture = picture;
     }
 
-
-    public int getStatusPicture() {
-        return statusPicture;
-    }
-
-    public void setStatusPicture(int statusPicture) {
-        this.statusPicture = statusPicture;
-    }
-
     private String name;
+    private String supplierName;
     private int picture;
-    private int statusPicture;
 }

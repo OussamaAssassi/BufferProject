@@ -24,8 +24,8 @@ public class ProductsService {
     public List<Product> getProblematicProducts()
     {
         List<Product> products = new ArrayList<Product>();
-        products.add(new Product("Paella", R.drawable.hands_icon));
-        products.add(new Product("Mushrooms", R.drawable.hands_icon));
+        products.add(new Product("Hoodies", R.drawable.distribution_icon));
+        products.add(new Product("Mushrooms", R.drawable.manufacturing_icon));
         return products;
     }
 }

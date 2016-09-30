@@ -8,8 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 
-import com.example.oussa.transparency_one.Adapters.ComponentsListAdapter;
-import com.example.oussa.transparency_one.Adapters.VisibilitiesListAdapter;
+import com.example.oussa.transparency_one.Adapters.SourcesListAdapter;
 import com.example.oussa.transparency_one.DTOs.Product;
 import com.example.oussa.transparency_one.R;
 
@@ -33,7 +32,7 @@ public class ComponentActivity extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.componentsListView);
 
-        List<Product> components = getComponentsForProduct();
+        List<Product> sources = getSourcesForComponent();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -43,14 +42,14 @@ public class ComponentActivity extends AppCompatActivity {
             }
         });
 
-        listView.setAdapter(new ComponentsListAdapter(ComponentActivity.this, components));
+        listView.setAdapter(new SourcesListAdapter(ComponentActivity.this, sources));
     }
-    private List<Product> getComponentsForProduct()
+
+    private List<Product> getSourcesForComponent()
     {
         List<Product> components = new ArrayList<Product>();
-        components.add(new Product("Weed", R.drawable.eye_icon, R.drawable.hands_icon));
-        components.add(new Product("Heroin", R.drawable.eye_icon, R.drawable.hands_icon));
-        components.add(new Product("Cocain", R.drawable.eye_icon, R.drawable.hands_icon));
+        components.add(new Product("Cotton plant - Bag of 50 kg", "Steadman Corp - Nicaragua", R.drawable.warning_icon));
+        components.add(new Product("Cotton plant - Bag of 100 kg", "Archibald Plantation - Brazil", R.drawable.new_icon));;
         return components;
     }
 }
