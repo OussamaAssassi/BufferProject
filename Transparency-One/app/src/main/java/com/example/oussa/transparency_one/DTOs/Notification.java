@@ -5,6 +5,7 @@ public class Notification {
     private String productName;
     private String supplierName;
     private String creationDate;
+    private Boolean isSelected;
     private int picture;
 
     public Notification(String productName, String supplierName, String creationDate, int pictureId) {
@@ -12,12 +13,14 @@ public class Notification {
         this.supplierName = supplierName;
         this.creationDate = creationDate;
         this.picture = pictureId;
+        this.isSelected = false;
     }
 
     public Notification(String productName, String supplierName, String creationDate) {
         this.productName = productName;
         this.supplierName = supplierName;
         this.creationDate = creationDate;
+        this.isSelected = false;
     }
 
     public String getProductName() {
@@ -51,4 +54,9 @@ public class Notification {
     public String getSupplierName() {
         return supplierName;
     }
+
+    public Boolean getSelected() { return isSelected; }
+
+    public void setSelected(Boolean selected) { isSelected = selected; }
+
 }
