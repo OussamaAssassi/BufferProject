@@ -35,7 +35,6 @@ public class ProductsListAdapter extends ArrayAdapter<Product> {
             convertView.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Source> sources
         Product product = getItem(position);
         viewHolder.name.setText(product.getName());
 

@@ -47,7 +47,7 @@
                 <!-- tab N°3 --> <!-- Inclusion of the interface -->
                 <include
                     android:id="@+id/i_layout_3"
-                    layout="@layout/updates"
+                    layout="@layout/activity_updates"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </FrameLayout>
