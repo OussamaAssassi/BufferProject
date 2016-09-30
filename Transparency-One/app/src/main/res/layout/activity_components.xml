@@ -30,6 +30,21 @@
             android:layout_alignBottom="@+id/pageTitle"
             android:layout_marginLeft="0dp" />
 
+        <TextView
+            android:text="Polyester"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textSize="17sp" />
+
+        <ListView
+            android:id="@+id/componentsListView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pageTitle"
+            android:layout_marginLeft="0dp" />
+
     </LinearLayout>
 
 </RelativeLayout>

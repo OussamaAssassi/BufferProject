@@ -11,6 +11,10 @@ public class Product {
         this.picture = picture;
     }
 
+    public Product(String productName, String supplierName) {
+        this.name = productName;
+        this.supplierName = supplierName;
+    }
 
     public Product(String productName, String supplierName, int picture) {
         this.name = productName;
