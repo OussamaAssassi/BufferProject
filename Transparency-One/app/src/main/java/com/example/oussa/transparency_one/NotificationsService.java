@@ -76,7 +76,7 @@ public class NotificationsService {
     {
         GlobalVariable appState = ((GlobalVariable)this.applicationContext);
 
-        List<Notification> notifs = appState.getSentNotificationsState();
+        List<Notification> notifs = appState.getReceivedNotificationsState();
         Notification toBeFulfilled = notifs.get(position);
         toBeFulfilled.setWasFulfilled(true);
         appState.setReceivedNotificationsState(notifs);
