@@ -1,6 +1,6 @@
-package com.example.oussa.transparency_one;
+package com.transparency_one;
 
-import com.example.oussa.transparency_one.DTOs.Notification;
+import com.transparency_one.DTOs.Notification;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class NotificationsService {
     public NotificationsService(android.content.Context applicationContext) {
         createSentBaseList();
         this.applicationContext = applicationContext;
-        GlobalVariable appState = ((GlobalVariable)applicationContext);
+        com.transparency_one.GlobalVariable appState = ((com.transparency_one.GlobalVariable)applicationContext);
         if(appState.getReceivedNotificationsState() == null) {
             List<Notification> baseReceivedNotifications = createReceivedBaseList();
             appState.setReceivedNotificationsState(baseReceivedNotifications);
@@ -51,30 +51,30 @@ public class NotificationsService {
     }
 
     public List<Notification> getReceivedNotifications() {
-        GlobalVariable appState = ((GlobalVariable)this.applicationContext);
+        com.transparency_one.GlobalVariable appState = ((com.transparency_one.GlobalVariable)this.applicationContext);
         List<Notification> allNotifications = appState.getReceivedNotificationsState();
 
         return allNotifications;
     }
 
     public void setReceivedNotifications(List<Notification> receivedNotifications) {
-        GlobalVariable appState = ((GlobalVariable)this.applicationContext);
+        com.transparency_one.GlobalVariable appState = ((com.transparency_one.GlobalVariable)this.applicationContext);
         appState.setReceivedNotificationsState(receivedNotifications);
     }
 
     public List<Notification> getSentNotifications() {
-        GlobalVariable appState = ((GlobalVariable)this.applicationContext);
+        com.transparency_one.GlobalVariable appState = ((com.transparency_one.GlobalVariable)this.applicationContext);
         return appState.getSentNotificationsState();
     }
 
     public void setRsentNotifications(List<Notification> sentNotifications) {
-        GlobalVariable appState = ((GlobalVariable)this.applicationContext);
+        com.transparency_one.GlobalVariable appState = ((com.transparency_one.GlobalVariable)this.applicationContext);
         appState.setSentNotificationsState(sentNotifications);
     }
 
     public void fulFilReceivedNotification(int position)
     {
-        GlobalVariable appState = ((GlobalVariable)this.applicationContext);
+        com.transparency_one.GlobalVariable appState = ((com.transparency_one.GlobalVariable)this.applicationContext);
 
         List<Notification> notifs = appState.getReceivedNotificationsState();
         Notification toBeFulfilled = notifs.get(position);

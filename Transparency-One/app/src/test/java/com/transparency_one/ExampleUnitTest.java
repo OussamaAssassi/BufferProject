@@ -1,4 +1,4 @@
-package com.example.oussa.transparency_one;
+package com.transparency_one;
 
 import org.junit.Test;
 

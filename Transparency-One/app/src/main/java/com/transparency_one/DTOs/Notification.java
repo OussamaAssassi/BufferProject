@@ -1,4 +1,4 @@
-package com.example.oussa.transparency_one.DTOs;
+package com.transparency_one.DTOs;
 
 public class Notification {
 

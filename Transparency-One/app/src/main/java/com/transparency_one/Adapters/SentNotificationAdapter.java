@@ -1,4 +1,4 @@
-package com.example.oussa.transparency_one.Adapters;
+package com.transparency_one.Adapters;
 
 /**
  * Created by oussa on 28/09/2016.
@@ -13,11 +13,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.example.oussa.transparency_one.DTOs.Notification;
-import com.example.oussa.transparency_one.R;
+import com.transparency_one.DTOs.Notification;
+import com.transparency_one.R;
 
 import java.util.List;
-
 public class SentNotificationAdapter extends ArrayAdapter<Notification> {
 
     public SentNotificationAdapter(Context context, List<Notification> notifications) {

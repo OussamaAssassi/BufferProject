@@ -1,4 +1,4 @@
-package com.example.oussa.transparency_one.Activities;
+package com.transparency_one.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,15 +10,16 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.example.oussa.transparency_one.Adapters.ProductsListAdapter;
-import com.example.oussa.transparency_one.DTOs.Notification;
-import com.example.oussa.transparency_one.DTOs.Product;
-import com.example.oussa.transparency_one.NotificationsService;
-import com.example.oussa.transparency_one.ProductsService;
-import com.example.oussa.transparency_one.R;
+import com.transparency_one.Adapters.ProductsListAdapter;
+import com.transparency_one.DTOs.Notification;
+import com.transparency_one.DTOs.Product;
+import com.transparency_one.NotificationsService;
+import com.transparency_one.ProductsService;
+import com.transparency_one.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class RequestActivity extends AppCompatActivity {
 
@@ -76,7 +77,7 @@ public class RequestActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // app icon in action bar clicked; go home
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, com.transparency_one.Activities.MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 return true;

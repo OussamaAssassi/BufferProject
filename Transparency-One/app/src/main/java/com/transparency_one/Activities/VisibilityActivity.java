@@ -1,4 +1,4 @@
-package com.example.oussa.transparency_one.Activities;
+package com.transparency_one.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 
-import com.example.oussa.transparency_one.Adapters.VisibilitiesListAdapter;
-import com.example.oussa.transparency_one.NotificationsService;
-import com.example.oussa.transparency_one.R;
+import com.transparency_one.Adapters.VisibilitiesListAdapter;
+import com.transparency_one.NotificationsService;
+import com.transparency_one.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +46,7 @@ public class VisibilityActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NotificationsService notificationService = new NotificationsService(VisibilityActivity.this.getApplicationContext());
                 notificationService.fulFilReceivedNotification(notificationPosition);
-                Intent myIntent = new Intent(VisibilityActivity.this, MainActivity.class);
+                Intent myIntent = new Intent(VisibilityActivity.this, com.transparency_one.Activities.MainActivity.class);
 
                 VisibilityActivity.this.startActivity(myIntent);
 
@@ -68,7 +68,7 @@ public class VisibilityActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // app icon in action bar clicked; go home
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, com.transparency_one.Activities.MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 return true;

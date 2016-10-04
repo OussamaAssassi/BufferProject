@@ -1,6 +1,6 @@
-package com.example.oussa.transparency_one;
+package com.transparency_one;
 
-import com.example.oussa.transparency_one.DTOs.Product;
+import com.transparency_one.DTOs.Product;
 
 import java.util.ArrayList;
 import java.util.List;

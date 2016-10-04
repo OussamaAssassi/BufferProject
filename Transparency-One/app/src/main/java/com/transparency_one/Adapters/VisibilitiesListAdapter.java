@@ -1,4 +1,4 @@
-package com.example.oussa.transparency_one.Adapters;
+package com.transparency_one.Adapters;
 
 /**
  * Created by oussa on 28/09/2016.
@@ -11,10 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.oussa.transparency_one.R;
+import com.transparency_one.R;
 
 import java.util.List;
-
 public class VisibilitiesListAdapter extends ArrayAdapter<String> {
 
     public VisibilitiesListAdapter(Context context, List<String> visibilities) {

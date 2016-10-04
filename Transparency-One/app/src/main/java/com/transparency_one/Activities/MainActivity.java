@@ -1,4 +1,4 @@
-package com.example.oussa.transparency_one.Activities;
+package com.transparency_one.Activities;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -15,14 +15,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 
-import com.example.oussa.transparency_one.Adapters.ProductsListAdapter;
-import com.example.oussa.transparency_one.Adapters.ReceivedNotificationAdapter;
-import com.example.oussa.transparency_one.Adapters.SentNotificationAdapter;
-import com.example.oussa.transparency_one.DTOs.Notification;
-import com.example.oussa.transparency_one.DTOs.Product;
-import com.example.oussa.transparency_one.NotificationsService;
-import com.example.oussa.transparency_one.ProductsService;
-import com.example.oussa.transparency_one.R;
+import com.transparency_one.Activities.RequestActivity;
+import com.transparency_one.Adapters.ProductsListAdapter;
+import com.transparency_one.Adapters.ReceivedNotificationAdapter;
+import com.transparency_one.Adapters.SentNotificationAdapter;
+import com.transparency_one.DTOs.Notification;
+import com.transparency_one.DTOs.Product;
+import com.transparency_one.NotificationsService;
+import com.transparency_one.ProductsService;
+import com.transparency_one.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -175,12 +176,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0) {
-                    Intent myIntent = new Intent(MainActivity.this, ComponentActivity.class);
+                    Intent myIntent = new Intent(MainActivity.this, com.transparency_one.Activities.ComponentActivity.class);
                     myIntent.putExtra("position", Integer.toString(position));
                     MainActivity.this.startActivity(myIntent);
                 }
                 if(position == 1) {
-                    Intent myIntent = new Intent(MainActivity.this, Component2Activity.class);
+                    Intent myIntent = new Intent(MainActivity.this, com.transparency_one.Activities.Component2Activity.class);
                     myIntent.putExtra("position", Integer.toString(position));
                     MainActivity.this.startActivity(myIntent);
                 }

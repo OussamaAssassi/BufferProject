@@ -1,8 +1,8 @@
-package com.example.oussa.transparency_one;
+package com.transparency_one;
 
 import android.app.Application;
 
-import com.example.oussa.transparency_one.DTOs.Notification;
+import com.transparency_one.DTOs.Notification;
 
 import java.util.List;
 
